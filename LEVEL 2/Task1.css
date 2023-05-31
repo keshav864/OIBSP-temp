@@ -1,0 +1,22 @@
+ /* CSS Styles */
+ .calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .calculator input[type="text"] {
+    grid-column: 1 / -1;
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  .calculator button {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+  }

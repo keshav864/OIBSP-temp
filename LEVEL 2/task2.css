@@ -1,0 +1,49 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header Styles */
+  header {
+    text-align: center;
+    padding: 50px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  /* Section Styles */
+  section {
+    padding: 50px;
+  }
+  
+  section h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* Contact Styles */
+  section#contact ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  section#contact li {
+    margin-bottom: 10px;
+  }
+  
+  section#contact a {
+    text-decoration: none;
+  }
+  
+  section#contact a:hover {
+    text-decoration: underline;
+  }
+  

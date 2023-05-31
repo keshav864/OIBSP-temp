@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color:skyblue;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .todo-container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .task-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .task-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .task-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+    
+    .button-container button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>To-Do App</h1>
+    <input type="text" id="taskInput" placeholder="Enter a task...">
+    <button onclick="addTask()">Add Task</button>
+    
+    <h2>Pending Tasks</h2>
+    <ul class="task-list" id="pendingTasks"></ul>
+    
+    <h2>Completed Tasks</h2>
+    <ul class="task-list" id="completedTasks"></ul>
+  </div>
+
+  <script>
+    // JavaScript code
+    const taskInput = document.getElementById('taskInput');
+    const pendingTasksList = document.getElementById('pendingTasks');
+    const completedTasksList = document.getElementById('completedTasks');
+
+    function addTask() {
+      const taskText = taskInput.value;
+      if (taskText.trim() !== '') {
+        const task = createTask(taskText);
+        pendingTasksList.appendChild(task);
+        taskInput.value = '';
+      }
+    }
+
+    function createTask(text) {
+      const listItem = document.createElement('li');
+      const taskText = document.createElement('span');
+      taskText.innerText = text;
+      const taskActions = document.createElement('div');
+      const completeButton = document.createElement('button');
+      completeButton.innerText = 'Complete';
+      completeButton.addEventListener('click', completeTask);
+      const deleteButton = document.createElement('button');
+      deleteButton.innerText = 'Delete';
+      deleteButton.addEventListener('click', deleteTask);
+
+      taskActions.appendChild(completeButton);
+      taskActions.appendChild(deleteButton);
+
+      listItem.appendChild(taskText);
+      listItem.appendChild(taskActions);
+
+      return listItem;
+    }
+
+    function completeTask(event) {
+      const listItem = event.target.parentNode.parentNode;
+      listItem.classList.toggle('completed');
+      const targetList = listItem.parentNode === pendingTasksList ? completedTasksList : pendingTasksList;
+      targetList.appendChild(listItem);
+    }
+
+    function deleteTask(event) {
+      const listItem = event.target.parentNode.parentNode;
+      listItem.parentNode.removeChild(listItem);
+    }
+  </script>
+</body>
+</html>
